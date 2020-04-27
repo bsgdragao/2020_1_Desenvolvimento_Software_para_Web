@@ -1,15 +1,22 @@
 <?php
-    
-    $usuario_cadastrado = "admin";
-    $senha_cadastrada = "123";
-
+    include_once "clsConexao.php";
+// $usuario_cadastrado = "admin";
+// $senha_cadastrada = "123";
     $user = $_POST['user'];
     $senha = $_POST['senha'];
 
-    if( $user == $usuario_cadastrado && $senha == $senha_cadastrada ){
+    $query = "SELECT id, nome, email FROM usuarios WHERE email = '$user' AND senha = '$senha' ";
+    $result = Conexao::consultar( $query );
+
+    if(  mysqli_num_rows($result) > 0 ){
         session_start();
+
+        $usuario = mysqli_fetch_assoc($result);
+
         $_SESSION["logado"] = TRUE;
-        $_SESSION["nome_usuario"] = $user;
+        $_SESSION["id_usuario"] = $usuario['id'];
+        $_SESSION["nome_usuario"] = $usuario['nome'];
+
         header( "Location: login.php" );
     }else{
         header( "Location: login.php?erroNoLogin" );
