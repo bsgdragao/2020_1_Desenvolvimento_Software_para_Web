@@ -14,3 +14,24 @@ body {
     width: 50%;
     height: 70px;
 }
+
+table,
+td {
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+#tbl_categorias {
+    border-color: blue;
+    background: #ddd;
+    padding: 10px;
+}
+
+#tbl_categorias td {
+    border-color: red;
+    background: #eee;
+}

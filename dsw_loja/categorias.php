@@ -23,6 +23,31 @@
         <input type="submit" value="Salvar" />
         <input type="reset" value="Limpar" />
     </form>
+
+    <hr>
+
+    <table id="tbl_categorias">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+        </tr>
+
+        <?php
+            include_once 'clsConexao.php';
+            $query = "SELECT * FROM categorias";
+            $result = Conexao::consultar( $query );
+
+            while( $cat = mysqli_fetch_array($result)){
+                echo '<tr>'; 
+                echo '    <td>'.$cat['id'].'</td>';
+                echo '    <td>'.$cat['nome'].'</td>';
+                echo '</tr>';
+            }
+        ?>
+        
+    </table>
+
+
     
 </body>
 </html>
