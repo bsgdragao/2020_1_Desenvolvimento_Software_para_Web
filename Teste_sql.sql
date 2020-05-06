@@ -60,7 +60,7 @@ INSERT INTO pedidos_produtos (codPedido, codProduto, preco, quantidade) VALUES
 (2, 3, 3.450, 1 ) ,
 (2, 2 , 4.99, 10 ) ;
 
-ELECT p.codigo, p.nome 
+SELECT p.codigo, p.nome 
 FROM produtos p
 WHERE EXISTS ( SELECT pp.codProduto
                FROM pedidos_produtos pp
